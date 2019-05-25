@@ -8,20 +8,20 @@ public class RestaurantPost {
     public double lat, lon; // 위치
     public String call;
     public HashMap<String,Double> menu = new HashMap<String,Double>();
-    public float score;
-    public String[] review;
+    public double star;
+    public HashMap<Integer, String> review = new HashMap<Integer, String>();
 
     public RestaurantPost(){}
     // default constructor
 
-    public RestaurantPost(String name, double lat, double lon, String call, HashMap<String,Double> menu, float score, String[] review){
+    public RestaurantPost(String name, double lat, double lon, String call, HashMap<String,Double> menu, double star, HashMap<Integer, String> review){
         this.name = name;
         this.lat = lat;
         this.lon = lon;
         this.call = call;
         this.menu.putAll(menu);
-        this.score = score;
-        this.review = (String[])review.clone();
+        this.star = star;
+        this.review.putAll(review);
     }
 
     public Map<String, Object> toMap(){
@@ -30,7 +30,9 @@ public class RestaurantPost {
         result.put("lat",lat);
         result.put("lon",lon);
         result.put("call",call);
-        result.put("score",score);
+        result.put("star",star);
+        result.put("menu", menu);
+        result.put("review",review);
         return result;
     }
 }
