@@ -2,6 +2,7 @@ package edu.skku.shinhyunjee.team9_project;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,12 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,11 +33,14 @@ public class FoodKindActivity extends AppCompatActivity {
     Button[] mButton = new Button[12];
     ArrayList<RestaurantItem> data;
     RestaurantAdapter adapter;
+    private DatabaseReference mPostReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_kind);
+
+        mPostReference = FirebaseDatabase.getInstance().getReference();
 
         Button.OnClickListener onClickListener = new Button.OnClickListener() {
             @Override
@@ -231,15 +241,16 @@ public class FoodKindActivity extends AppCompatActivity {
 
         mListView=findViewById(R.id.listView);
         data=new ArrayList<RestaurantItem>();
+
+        // getFirebaseDatabase에 의해 사라짐
         RestaurantItem r1=new RestaurantItem("밥톨이",3.4,"돈까스/회/일식",1.2);
         data.add(r1);
         RestaurantItem r2=new RestaurantItem("야미",4.7,"돈까스/회/일식",2.5);
         data.add(r2);
+
+
         adapter = new RestaurantAdapter(this,data);
         mListView.setAdapter(adapter);
-
-
-
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -248,7 +259,33 @@ public class FoodKindActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //yujin
+        getFirebaseDatabase();
+
     }
 
+    //yujin
+    public void getFirebaseDatabase(){
+        final ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                data.clear();
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                    Log.d("getFirebaseDatabase","key: "+ds.getKey());
+                    RestaurantPost get = ds.getValue(RestaurantPost.class);
+                    RestaurantItem ri = new RestaurantItem(get.name,get.star,"content",0); // temporary distance 0
+                    data.add(ri);
+                }
+                mListView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        mPostReference.child("FoodKind").addValueEventListener(postListener);
+    }
 
 }
