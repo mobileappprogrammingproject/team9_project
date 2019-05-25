@@ -1,5 +1,6 @@
 package edu.skku.shinhyunjee.team9_project;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,19 +10,21 @@ public class RestaurantPost {
     public String call;
     public HashMap<String,Double> menu = new HashMap<String,Double>();
     public double star;
-    public HashMap<Integer, String> review = new HashMap<Integer, String>();
+    public ArrayList<String> review = new ArrayList<>();
+    //public HashMap<String, String> review = new HashMap<String, String>();
 
     public RestaurantPost(){}
     // default constructor
 
-    public RestaurantPost(String name, double lat, double lon, String call, HashMap<String,Double> menu, double star, HashMap<Integer, String> review){
+    public RestaurantPost(String name, double lat, double lon, String call, HashMap<String,Double> menu, double star, ArrayList<String> review){
         this.name = name;
         this.lat = lat;
         this.lon = lon;
         this.call = call;
         this.menu.putAll(menu);
         this.star = star;
-        this.review.putAll(review);
+        this.review.addAll(review);
+        //this.review.putAll(review);
     }
 
     public Map<String, Object> toMap(){
