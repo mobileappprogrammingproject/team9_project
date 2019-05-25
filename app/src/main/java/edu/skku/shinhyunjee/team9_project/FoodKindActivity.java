@@ -231,11 +231,11 @@ public class FoodKindActivity extends AppCompatActivity {
 
         for(int i=0;i<12;i++) {
             mButton[i].setOnClickListener(onClickListener);
-        }
+    }
         for(int i=0;i<12;i++) {
-            if (foodKind.equals(mButton[i].getText().toString()))
+        if (foodKind.equals(mButton[i].getText().toString()))
             mButton[i].performClick();
-        }
+    }
 
 
 
@@ -260,7 +260,6 @@ public class FoodKindActivity extends AppCompatActivity {
             }
         });
 
-        //yujin
         getFirebaseDatabase();
 
     }
@@ -285,7 +284,7 @@ public class FoodKindActivity extends AppCompatActivity {
 
             }
         };
-        mPostReference.child("FoodKind").addValueEventListener(postListener);
+        mPostReference.child("FoodKind").child("KoreanFood").addValueEventListener(postListener);
     }
 
 }
