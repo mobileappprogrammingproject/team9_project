@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "442197116978",
+    "firebase_url": "https://team9project-f0758.firebaseio.com",
+    "project_id": "team9project-f0758",
+    "storage_bucket": "team9project-f0758.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442197116978:android:451f0604131ff200",
+        "android_client_info": {
+          "package_name": "edu.skku.shinhyunjee.team9_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442197116978-qhuad3qecndgav2po5pgc6rdthl1pm79.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIBvO4fqdLFVxNaVnFHraX_pist_1wRkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442197116978-qhuad3qecndgav2po5pgc6rdthl1pm79.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
