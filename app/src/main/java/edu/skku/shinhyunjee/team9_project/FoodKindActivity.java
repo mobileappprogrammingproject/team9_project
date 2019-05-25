@@ -31,9 +31,10 @@ import java.util.Comparator;
 public class FoodKindActivity extends AppCompatActivity {
     ListView mListView;
     Button[] mButton = new Button[12];
-    ArrayList<RestaurantItem> data;
-    RestaurantAdapter adapter;
+    ArrayList<RestaurantItem> data[] = new ArrayList[12];
+    RestaurantAdapter adapter[] = new RestaurantAdapter[12];
     private DatabaseReference mPostReference;
+    String[] foodKindName = {"KoreanFood","Pizza","Dessert","Snack","Chicken","ChineseFood","JapaneseFood","nightFood","beef","Hamburger","lunchBox","soup"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,21 @@ public class FoodKindActivity extends AppCompatActivity {
         setContentView(R.layout.activity_food_kind);
 
         mPostReference = FirebaseDatabase.getInstance().getReference();
+        for(int i=0;i<12;i++) data[i] = new ArrayList<RestaurantItem>(); // arraylist array initialize
+
+        //set adapter and listview
+        mListView=findViewById(R.id.listView);
+        for(int i=0;i<12;i++) {
+            adapter[i] = new RestaurantAdapter(this, data[i]);
+            mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
+                    intent.putExtra("Key", data[i].get(i).getName());
+                    startActivity(intent);
+                }
+            });
+        }
 
         Button.OnClickListener onClickListener = new Button.OnClickListener() {
             @Override
@@ -56,6 +72,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[0].setBackgroundResource(R.drawable.down_gray_lines);
                         mButton[0].setTypeface(null, Typeface.BOLD);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
+                        getFirebaseDatabase(0,foodKindName[0]);
                         break;
                     case R.id.Pizza:
                         for (int i = 0; i < 12; i++) {
@@ -66,6 +83,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[1].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
+                        getFirebaseDatabase(1,foodKindName[1]);
                         break;
                     case R.id.Dessert:
                         for (int i = 0; i < 12; i++) {
@@ -76,6 +94,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[2].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
+                        getFirebaseDatabase(2,foodKindName[2]);
                         break;
                     case R.id.Snack:
                         for (int i = 0; i < 12; i++) {
@@ -86,6 +105,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[3].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
+                        getFirebaseDatabase(3,foodKindName[3]);
                         break;
                     case R.id.Chicken:
                         for (int i = 0; i < 12; i++) {
@@ -96,6 +116,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[4].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
+                        getFirebaseDatabase(4,foodKindName[4]);
                         break;
                     case R.id.ChineseFood:
                         for (int i = 0; i < 12; i++) {
@@ -106,6 +127,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[5].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
+                        getFirebaseDatabase(5,foodKindName[5]);
                         break;
                     case R.id.JapaneseFood:
                         for (int i = 0; i < 12; i++) {
@@ -116,6 +138,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[6].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
+                        getFirebaseDatabase(6,foodKindName[6]);
                         break;
                     case R.id.nightFood:
                         for (int i = 0; i < 12; i++) {
@@ -126,6 +149,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[7].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
+                        getFirebaseDatabase(7,foodKindName[7]);
                         break;
                     case R.id.beef:
                         for (int i = 0; i < 12; i++) {
@@ -136,6 +160,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[8].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
+                        getFirebaseDatabase(8,foodKindName[8]);
                         break;
                     case R.id.Hamburger:
                         for (int i = 0; i < 12; i++) {
@@ -146,6 +171,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[9].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
+                        getFirebaseDatabase(9,foodKindName[9]);
                         break;
                     case R.id.lunchBox:
                         for (int i = 0; i < 12; i++) {
@@ -156,6 +182,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[10].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
+                        getFirebaseDatabase(10,foodKindName[10]);
                         break;
                     case R.id.soup:
                         for (int i = 0; i < 12; i++) {
@@ -165,6 +192,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[11].setBackgroundResource(R.drawable.down_left_right_gray_lines);
                         mButton[11].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
+                        getFirebaseDatabase(11,foodKindName[11]);
                         break;
                 }
             }
@@ -199,15 +227,15 @@ public class FoodKindActivity extends AppCompatActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         int id=menuItem.getItemId();
-                        if(id==R.id.m1){
-                            Collections.sort(data,cmpDis);
-                            mListView.setAdapter(adapter);
+                        for(int i=0;i<12;i++) {
+                            if (id == R.id.m1) {
+                                Collections.sort(data[i], cmpDis);
+                                mListView.setAdapter(adapter[i]);
+                            } else if (id == R.id.m2) {
+                                Collections.sort(data[i], cmpStar);
+                                mListView.setAdapter(adapter[i]);
+                            }
                         }
-                        else if(id==R.id.m2){
-                            Collections.sort(data,cmpStar);
-                            mListView.setAdapter(adapter);
-                        }
-
                         return false;
                     }
                 });
@@ -235,48 +263,25 @@ public class FoodKindActivity extends AppCompatActivity {
         for(int i=0;i<12;i++) {
         if (foodKind.equals(mButton[i].getText().toString()))
             mButton[i].performClick();
+            getFirebaseDatabase(i,foodKindName[i]);
+            break;
     }
-
-
-
-        mListView=findViewById(R.id.listView);
-        data=new ArrayList<RestaurantItem>();
-
-        // getFirebaseDatabase에 의해 사라짐
-        RestaurantItem r1=new RestaurantItem("밥톨이",3.4,"돈까스/회/일식",1.2);
-        data.add(r1);
-        RestaurantItem r2=new RestaurantItem("야미",4.7,"돈까스/회/일식",2.5);
-        data.add(r2);
-
-
-        adapter = new RestaurantAdapter(this,data);
-        mListView.setAdapter(adapter);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
-                intent.putExtra("Key",data.get(i).getName());
-                startActivity(intent);
-            }
-        });
-
-        getFirebaseDatabase();
 
     }
 
     //yujin
-    public void getFirebaseDatabase(){
+    public void getFirebaseDatabase(final int num, String child){
         final ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                data.clear();
+                data[num].clear();
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     Log.d("getFirebaseDatabase","key: "+ds.getKey());
                     RestaurantPost get = ds.getValue(RestaurantPost.class);
                     RestaurantItem ri = new RestaurantItem(get.name,get.star,"content",0); // temporary distance 0
-                    data.add(ri);
+                    data[num].add(ri);
                 }
-                mListView.setAdapter(adapter);
+                mListView.setAdapter(adapter[num]);
             }
 
             @Override
@@ -284,7 +289,7 @@ public class FoodKindActivity extends AppCompatActivity {
 
             }
         };
-        mPostReference.child("FoodKind").child("KoreanFood").addValueEventListener(postListener);
+        mPostReference.child("FoodKind").child(child).addValueEventListener(postListener);
     }
 
 }
