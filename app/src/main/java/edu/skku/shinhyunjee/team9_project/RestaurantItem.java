@@ -17,12 +17,12 @@ public class RestaurantItem {
 
     private double lat, lon;
     private String call;
-    private HashMap<String,Double> menu = new HashMap<String,Double>();
+    private HashMap<String,Integer> menu = new HashMap<String,Integer>();
     private ArrayList<String> review = new ArrayList<>();
 
     public RestaurantItem () { } // default constructor
 
-    public RestaurantItem(String name,  double star, String content, double dis, double lat, double lon, String call, HashMap<String,Double> menu, ArrayList<String> review) {
+    public RestaurantItem(String name,  double star, String content, double dis, double lat, double lon, String call, HashMap<String,Integer> menu, ArrayList<String> review) {
         this.name = name;
         this.star = star;
         this.content = content;
@@ -59,7 +59,7 @@ public class RestaurantItem {
 
     public String getCall(){return call;}
 
-    public HashMap<String, Double> getMenu(){return menu;}
+    public HashMap<String, Integer> getMenu(){return menu;}
 
     public ArrayList<String> getReview(){return review;}
 
