@@ -53,7 +53,13 @@ public class FoodKindActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
-                    intent.putExtra("Key", data[i].get(i).getName());
+                    RestaurantItem ri = data[i].get(i);
+                    intent.putExtra("name", ri.getName());
+                    intent.putExtra("lat", ri.getLat());
+                    intent.putExtra("lon",ri.getLon());
+                    intent.putExtra("call",ri.getCall());
+                    intent.putExtra("menu",ri.getMenu());
+                    intent.putExtra("review",ri.getReview());
                     startActivity(intent);
                 }
             });

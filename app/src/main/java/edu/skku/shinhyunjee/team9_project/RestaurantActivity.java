@@ -3,6 +3,7 @@ package edu.skku.shinhyunjee.team9_project;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import org.w3c.dom.Text;
 
 public class RestaurantActivity extends AppCompatActivity {
     TextView text;
+    Button call_btn;
     private void changeView(int index) {
         ListView menuList=(ListView)findViewById(R.id.menuList);
         TextView textView2 = (TextView) findViewById(R.id.information) ;
@@ -51,11 +53,24 @@ public class RestaurantActivity extends AppCompatActivity {
         final int height = Math.round(10 * density);
         drawable.setBounds(0, 0, width, height);
         call.setCompoundDrawables(drawable, null, null, null);
+
         Intent intent2=getIntent();
-        String restaurant=intent2.getStringExtra("Key");
+        String restaurant=intent2.getStringExtra("name");
         text=findViewById(R.id.textView);
         text.setText(restaurant);
         changeView(0);
+
+        // call button
+        final String call_number = intent2.getStringExtra("call");
+        call_btn=(Button)findViewById(R.id.call);
+        call_btn.setText(call_number);
+        call_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+call_number)));
+            }
+        });
+
         final Button button1=(Button)findViewById(R.id.menu);
         final Button button2 = (Button) findViewById(R.id.info) ;
         final Button button3=(Button)findViewById(R.id.review);
