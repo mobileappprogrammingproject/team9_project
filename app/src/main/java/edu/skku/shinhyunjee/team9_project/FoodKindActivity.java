@@ -35,6 +35,7 @@ public class FoodKindActivity extends AppCompatActivity {
     RestaurantAdapter adapter[] = new RestaurantAdapter[12];
     private DatabaseReference mPostReference;
     String[] foodKindName = {"KoreanFood","Pizza","Dessert","Snack","Chicken","ChineseFood","JapaneseFood","nightFood","beef","Hamburger","lunchBox","soup"};
+    String[] content = {"한식","피자","카페/디저트","분식","치킨","중국집","돈까스/회/일식","야식","보쌈/족발","패스트푸드","도시락","찜/탕"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,13 @@ public class FoodKindActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
-                    intent.putExtra("Key", data[i].get(i).getName());
+                    RestaurantItem ri = data[i].get(i);
+                    intent.putExtra("name", ri.getName());
+                    intent.putExtra("lat", ri.getLat());
+                    intent.putExtra("lon",ri.getLon());
+                    intent.putExtra("call",ri.getCall());
+                    intent.putExtra("menu",ri.getMenu());
+                    intent.putExtra("review",ri.getReview());
                     startActivity(intent);
                 }
             });
@@ -72,7 +79,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[0].setBackgroundResource(R.drawable.down_gray_lines);
                         mButton[0].setTypeface(null, Typeface.BOLD);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
-                        getFirebaseDatabase(0,foodKindName[0]);
+                        getFirebaseDatabase(0,foodKindName[0],content[0]);
                         break;
                     case R.id.Pizza:
                         for (int i = 0; i < 12; i++) {
@@ -83,7 +90,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[1].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
-                        getFirebaseDatabase(1,foodKindName[1]);
+                        getFirebaseDatabase(1,foodKindName[1],content[1]);
                         break;
                     case R.id.Dessert:
                         for (int i = 0; i < 12; i++) {
@@ -94,7 +101,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[2].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
-                        getFirebaseDatabase(2,foodKindName[2]);
+                        getFirebaseDatabase(2,foodKindName[2],content[2]);
                         break;
                     case R.id.Snack:
                         for (int i = 0; i < 12; i++) {
@@ -105,7 +112,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[3].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
-                        getFirebaseDatabase(3,foodKindName[3]);
+                        getFirebaseDatabase(3,foodKindName[3],content[3]);
                         break;
                     case R.id.Chicken:
                         for (int i = 0; i < 12; i++) {
@@ -116,7 +123,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[4].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
-                        getFirebaseDatabase(4,foodKindName[4]);
+                        getFirebaseDatabase(4,foodKindName[4],content[4]);
                         break;
                     case R.id.ChineseFood:
                         for (int i = 0; i < 12; i++) {
@@ -127,7 +134,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[5].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
-                        getFirebaseDatabase(5,foodKindName[5]);
+                        getFirebaseDatabase(5,foodKindName[5],content[5]);
                         break;
                     case R.id.JapaneseFood:
                         for (int i = 0; i < 12; i++) {
@@ -138,7 +145,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[6].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
-                        getFirebaseDatabase(6,foodKindName[6]);
+                        getFirebaseDatabase(6,foodKindName[6],content[6]);
                         break;
                     case R.id.nightFood:
                         for (int i = 0; i < 12; i++) {
@@ -149,7 +156,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[7].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
-                        getFirebaseDatabase(7,foodKindName[7]);
+                        getFirebaseDatabase(7,foodKindName[7],content[7]);
                         break;
                     case R.id.beef:
                         for (int i = 0; i < 12; i++) {
@@ -160,7 +167,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[8].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
-                        getFirebaseDatabase(8,foodKindName[8]);
+                        getFirebaseDatabase(8,foodKindName[8],content[8]);
                         break;
                     case R.id.Hamburger:
                         for (int i = 0; i < 12; i++) {
@@ -171,7 +178,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[9].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
-                        getFirebaseDatabase(9,foodKindName[9]);
+                        getFirebaseDatabase(9,foodKindName[9],content[9]);
                         break;
                     case R.id.lunchBox:
                         for (int i = 0; i < 12; i++) {
@@ -182,7 +189,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[10].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
-                        getFirebaseDatabase(10,foodKindName[10]);
+                        getFirebaseDatabase(10,foodKindName[10],content[10]);
                         break;
                     case R.id.soup:
                         for (int i = 0; i < 12; i++) {
@@ -192,7 +199,7 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[11].setBackgroundResource(R.drawable.down_left_right_gray_lines);
                         mButton[11].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
-                        getFirebaseDatabase(11,foodKindName[11]);
+                        getFirebaseDatabase(11,foodKindName[11], content[11]);
                         break;
                 }
             }
@@ -261,16 +268,17 @@ public class FoodKindActivity extends AppCompatActivity {
             mButton[i].setOnClickListener(onClickListener);
     }
         for(int i=0;i<12;i++) {
-        if (foodKind.equals(mButton[i].getText().toString()))
+        if (foodKind.equals(mButton[i].getText().toString())) {
             mButton[i].performClick();
-            getFirebaseDatabase(i,foodKindName[i]);
+            getFirebaseDatabase(i,foodKindName[i], content[i]);
             break;
+        }
     }
 
     }
 
     //yujin
-    public void getFirebaseDatabase(final int num, String child){
+    public void getFirebaseDatabase(final int num, String child, final String content){
         final ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -278,7 +286,7 @@ public class FoodKindActivity extends AppCompatActivity {
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     Log.d("getFirebaseDatabase","key: "+ds.getKey());
                     RestaurantPost get = ds.getValue(RestaurantPost.class);
-                    RestaurantItem ri = new RestaurantItem(get.name,get.star,"content",0); // temporary distance 0
+                    RestaurantItem ri = new RestaurantItem(get.name,get.star, content,0 , get.lat, get.lon, get.call,get.menu,get.review); // temporary distance 0
                     data[num].add(ri);
                 }
                 mListView.setAdapter(adapter[num]);

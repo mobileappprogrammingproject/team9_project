@@ -8,7 +8,7 @@ public class RestaurantPost {
     public String name;
     public double lat, lon; // 위치
     public String call;
-    public HashMap<String,Double> menu = new HashMap<String,Double>();
+    public HashMap<String,Integer> menu = new HashMap<String,Integer>();
     public double star;
     public ArrayList<String> review = new ArrayList<>();
     //public HashMap<String, String> review = new HashMap<String, String>();
@@ -16,7 +16,7 @@ public class RestaurantPost {
     public RestaurantPost(){}
     // default constructor
 
-    public RestaurantPost(String name, double lat, double lon, String call, HashMap<String,Double> menu, double star, ArrayList<String> review){
+    public RestaurantPost(String name, double lat, double lon, String call, HashMap<String,Integer> menu, double star, ArrayList<String> review){
         this.name = name;
         this.lat = lat;
         this.lon = lon;
@@ -24,7 +24,6 @@ public class RestaurantPost {
         this.menu.putAll(menu);
         this.star = star;
         this.review.addAll(review);
-        //this.review.putAll(review);
     }
 
     public Map<String, Object> toMap(){
