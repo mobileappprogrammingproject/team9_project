@@ -36,6 +36,7 @@ public class FoodKindActivity extends AppCompatActivity {
     private DatabaseReference mPostReference;
     String[] foodKindName = {"KoreanFood","Pizza","Dessert","Snack","Chicken","ChineseFood","JapaneseFood","nightFood","beef","Hamburger","lunchBox","soup"};
     String[] content = {"한식","피자","카페/디저트","분식","치킨","중국집","돈까스/회/일식","야식","보쌈/족발","패스트푸드","도시락","찜/탕"};
+    ArrayList<RestaurantItem> temp = new ArrayList<RestaurantItem>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +48,18 @@ public class FoodKindActivity extends AppCompatActivity {
 
         //set adapter and listview
         mListView=findViewById(R.id.listView);
-        for(int i=0;i<12;i++) {
-            adapter[i] = new RestaurantAdapter(this, data[i]);
-            mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        for(int k=0;k<12;k++) {
+            temp = data[k];
+            adapter[k] = new RestaurantAdapter(this, data[k]);
+            /*mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
                     Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
-                    RestaurantItem ri = data[i].get(i);
+                    RestaurantItem ri = temp.get(i);
                     intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                     startActivity(intent);
                 }
-            });
+            });*/
         }
 
         Button.OnClickListener onClickListener = new Button.OnClickListener() {
@@ -75,6 +77,16 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[0].setTypeface(null, Typeface.BOLD);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
                         getFirebaseDatabase(0,foodKindName[0],content[0]);
+                        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                                Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
+                                RestaurantItem ri = data[0].get(i);
+                                intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
+                                intent.putExtra("number",ri.getNumber());
+                                startActivity(intent);
+                            }
+                        });
                         break;
                     case R.id.Pizza:
                         for (int i = 0; i < 12; i++) {
@@ -86,6 +98,16 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
                         getFirebaseDatabase(1,foodKindName[1],content[1]);
+                        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                                Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
+                                RestaurantItem ri = data[1].get(i);
+                                intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
+                                intent.putExtra("number",ri.getNumber());
+                                startActivity(intent);
+                            }
+                        });
                         break;
                     case R.id.Dessert:
                         for (int i = 0; i < 12; i++) {
@@ -97,6 +119,16 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
                         getFirebaseDatabase(2,foodKindName[2],content[2]);
+                        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                                Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
+                                RestaurantItem ri = data[2].get(i);
+                                intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
+                                intent.putExtra("number",ri.getNumber());
+                                startActivity(intent);
+                            }
+                        });
                         break;
                     case R.id.Snack:
                         for (int i = 0; i < 12; i++) {
@@ -108,6 +140,16 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
                         getFirebaseDatabase(3,foodKindName[3],content[3]);
+                        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                                Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
+                                RestaurantItem ri = data[3].get(i);
+                                intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
+                                intent.putExtra("number",ri.getNumber());
+                                startActivity(intent);
+                            }
+                        });
                         break;
                     case R.id.Chicken:
                         for (int i = 0; i < 12; i++) {
@@ -119,6 +161,16 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
                         getFirebaseDatabase(4,foodKindName[4],content[4]);
+                        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                                Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
+                                RestaurantItem ri = data[4].get(i);
+                                intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
+                                intent.putExtra("number",ri.getNumber());
+                                startActivity(intent);
+                            }
+                        });
                         break;
                     case R.id.ChineseFood:
                         for (int i = 0; i < 12; i++) {
@@ -130,6 +182,16 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
                         getFirebaseDatabase(5,foodKindName[5],content[5]);
+                        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                                Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
+                                RestaurantItem ri = data[5].get(i);
+                                intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
+                                intent.putExtra("number",ri.getNumber());
+                                startActivity(intent);
+                            }
+                        });
                         break;
                     case R.id.JapaneseFood:
                         for (int i = 0; i < 12; i++) {
@@ -141,6 +203,17 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
                         getFirebaseDatabase(6,foodKindName[6],content[6]);
+                        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                                Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
+                                RestaurantItem ri = data[6].get(i);
+                                intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
+                                intent.putExtra("number",ri.getNumber());
+
+                                startActivity(intent);
+                            }
+                        });
                         break;
                     case R.id.nightFood:
                         for (int i = 0; i < 12; i++) {
@@ -152,6 +225,17 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
                         getFirebaseDatabase(7,foodKindName[7],content[7]);
+                        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                            Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
+                            RestaurantItem ri = data[7].get(i);
+                            intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
+                            intent.putExtra("number",ri.getNumber());
+
+                            startActivity(intent);
+                        }
+                    });
                         break;
                     case R.id.beef:
                         for (int i = 0; i < 12; i++) {
@@ -163,6 +247,17 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
                         getFirebaseDatabase(8,foodKindName[8],content[8]);
+                        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                                Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
+                                RestaurantItem ri = data[8].get(i);
+                                intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
+                                intent.putExtra("number",ri.getNumber());
+
+                                startActivity(intent);
+                            }
+                        });
                         break;
                     case R.id.Hamburger:
                         for (int i = 0; i < 12; i++) {
@@ -174,6 +269,17 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
                         getFirebaseDatabase(9,foodKindName[9],content[9]);
+                        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                                Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
+                                RestaurantItem ri = data[9].get(i);
+                                intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
+                                intent.putExtra("number",ri.getNumber());
+
+                                startActivity(intent);
+                            }
+                        });
                         break;
                     case R.id.lunchBox:
                         for (int i = 0; i < 12; i++) {
@@ -185,6 +291,17 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         mButton[11].setBackgroundResource(R.drawable.down_lines);
                         getFirebaseDatabase(10,foodKindName[10],content[10]);
+                        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                                Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
+                                RestaurantItem ri = data[10].get(i);
+                                intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
+                                intent.putExtra("number",ri.getNumber());
+
+                                startActivity(intent);
+                            }
+                        });
                         break;
                     case R.id.soup:
                         for (int i = 0; i < 12; i++) {
@@ -195,6 +312,17 @@ public class FoodKindActivity extends AppCompatActivity {
                         mButton[11].setTypeface(null, Typeface.BOLD);
                         mButton[0].setBackgroundResource(R.drawable.down_lines);
                         getFirebaseDatabase(11,foodKindName[11], content[11]);
+                        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                                Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
+                                RestaurantItem ri = data[11].get(i);
+                                intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
+                                intent.putExtra("number",ri.getNumber());
+
+                                startActivity(intent);
+                            }
+                        });
                         break;
                 }
             }
