@@ -13,12 +13,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/star"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"/>
 
     <ImageView
         android:id="@+id/star"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:layout_marginLeft="10dp"
         android:background="@android:drawable/btn_star_big_on"
         app:layout_constraintStart_toEndOf="@+id/name_tv"
         app:layout_constraintTop_toTopOf="parent" />
