@@ -1,6 +1,8 @@
 package edu.skku.shinhyunjee.team9_project;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +27,11 @@ public class LoginActivity extends AppCompatActivity {
     EditText pw;
     Button signin;
     Button signup;
+
+    String shakey;
+
+    SharedPreferences loginPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +39,19 @@ public class LoginActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("user_info");
         id = findViewById(R.id.ID);
         pw=findViewById(R.id.PW);
+
+        final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Context context = this;
+        SharedPreferences loginPref = context.getSharedPreferences( "login", Context.MODE_PRIVATE);
+
+
+        final SharedPreferences.Editor editor = loginPref.edit();
+        final String defaultValue = loginPref.getString("login", null);
+        if (defaultValue != null) {
+            startActivity(intent);
+            finish();
+        };
+
         signin = findViewById(R.id.button);
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +70,10 @@ public class LoginActivity extends AppCompatActivity {
                                 if(PW.equals(pw.getText().toString())) {
                                     Toast.makeText(getApplicationContext(), "로그인되었습니다", Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    shakey = id.getText().toString();
+                                    Log.d("shakey", shakey);
+                                    editor.putString("login", shakey);
+                                    editor.commit();
                                     startActivity(intent);
                                     return;
                                 }
