@@ -142,6 +142,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         childUpdates.put("/restaurant_list/"+restaurant+"/evaluation/review_list/"+cnt, postValue);
         childUpdates.put("/restaurant_list/"+restaurant+"/evaluation/cnt",count);
         childUpdates.put("/restaurant_list/"+restaurant+"/evaluation/sum",sum);
+        if(count != 0) childUpdates.put("/restaurant_list/"+restaurant+"/star",sum/count);
         postReference.updateChildren(childUpdates);
     }
 }
