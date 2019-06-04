@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -24,9 +31,11 @@ import java.util.Iterator;
 import java.util.List;
 
 public class RestaurantActivity extends AppCompatActivity {
+    private DatabaseReference menuReference;
     TextView text;
     Button call_btn;
     ListView mListView;
+    ArrayList<String> menu_array;
     private void changeView(int index) {
         ListView menuList=(ListView)findViewById(R.id.menuList);
         TextView textView2 = (TextView) findViewById(R.id.information) ;
@@ -60,12 +69,14 @@ public class RestaurantActivity extends AppCompatActivity {
         final int height = Math.round(10 * density);
         drawable.setBounds(0, 0, width, height);
 
-        Intent intent2=getIntent();
-        String restaurant=intent2.getStringExtra("name");
-        text=findViewById(R.id.textView);
+        Intent intent2 = getIntent();
+        String restaurant = intent2.getStringExtra("name");
+        text = findViewById(R.id.textView);
         text.setText(restaurant);
         changeView(0);
 
+        menuReference = FirebaseDatabase.getInstance().getReference();
+/*
         // call button
         final String call_number = intent2.getStringExtra("call");
         call_btn=(Button)findViewById(R.id.call);
@@ -76,17 +87,12 @@ public class RestaurantActivity extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+call_number)));
             }
-        });
+        });*/
 
         //menu list
-        HashMap<String,Double> menu = (HashMap<String,Double>)intent2.getSerializableExtra("menu");
         mListView = (ListView)findViewById(R.id.menuList);
-        ArrayList<String> menu_array = new ArrayList<String>();
-        Iterator<String> menu_iterator = menu.keySet().iterator();
-        while(menu_iterator.hasNext()){
-            String key = menu_iterator.next();
-            menu_array.add(key+": "+menu.get(key)+"원");
-        }
+        menu_array = new ArrayList<String>();
+        getMenuData(restaurant);
         ArrayAdapter<String> menu_adapter = new ArrayAdapter<String>(RestaurantActivity.this,android.R.layout.simple_list_item_1,menu_array);
         mListView.setAdapter(menu_adapter);
 
@@ -163,5 +169,25 @@ public class RestaurantActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+    public void getMenuData(String restaurant){
+        final ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot mds : dataSnapshot.getChildren()){
+                    Log.d("getMenu","key: "+mds.getKey());
+                    Integer price = mds.getValue(Integer.class);
+                    menu_array.add(mds.getKey()+": "+price.toString()+"원");
+                }
+                    ArrayAdapter<String> menu_adapter = new ArrayAdapter<String>(RestaurantActivity.this,android.R.layout.simple_list_item_1,menu_array);
+                mListView.setAdapter(menu_adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        menuReference.child("restaurant_list").child(restaurant).child("menu").addValueEventListener(postListener);
     }
 }

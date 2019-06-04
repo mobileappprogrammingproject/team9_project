@@ -51,15 +51,10 @@ public class FoodKindActivity extends AppCompatActivity {
             adapter[i] = new RestaurantAdapter(this, data[i]);
             mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
                     Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
                     RestaurantItem ri = data[i].get(i);
-                    intent.putExtra("name", ri.getName());
-                    intent.putExtra("lat", ri.getLat());
-                    intent.putExtra("lon",ri.getLon());
-                    intent.putExtra("call",ri.getCall());
-                    intent.putExtra("menu",ri.getMenu());
-                    intent.putExtra("review",ri.getReview());
+                    intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                     startActivity(intent);
                 }
             });
@@ -215,8 +210,8 @@ public class FoodKindActivity extends AppCompatActivity {
         final Comparator<RestaurantItem> cmpStar = new Comparator<RestaurantItem>() {
             @Override
             public int compare(RestaurantItem r1, RestaurantItem r2) {
-
-                return Double.valueOf(r2.getStar()).compareTo(Double.valueOf(r1.getStar()));
+                return 0;
+                //return Double.valueOf(r2.getEvaluation()[0].getStar()).compareTo(Double.valueOf(r1.getEvaluation()[0].getStar()));
             }
         };
 
@@ -286,8 +281,12 @@ public class FoodKindActivity extends AppCompatActivity {
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     Log.d("getFirebaseDatabase","key: "+ds.getKey());
                     RestaurantPost get = ds.getValue(RestaurantPost.class);
-                    RestaurantItem ri = new RestaurantItem(get.name,get.star, content,0 , get.lat, get.lon, get.call,get.menu,get.review); // temporary distance 0
-                    data[num].add(ri);
+                    RestaurantItem ri = new RestaurantItem(get.name,get.info, get.location,get.business_hours,get.number,get.kind,get.star); // temporary distance 0
+                    for(String retval : content.split("/")) {
+                        if (get.kind.contains(retval)) {
+                            data[num].add(ri);
+                        }
+                    }
                 }
                 mListView.setAdapter(adapter[num]);
             }
@@ -297,7 +296,8 @@ public class FoodKindActivity extends AppCompatActivity {
 
             }
         };
-        mPostReference.child("FoodKind").child(child).addValueEventListener(postListener);
+        mPostReference.child("restaurant_list").addValueEventListener(postListener);
     }
 
 }
+
