@@ -70,15 +70,15 @@ public class RestaurantActivity extends AppCompatActivity {
         drawable.setBounds(0, 0, width, height);
 
         Intent intent2 = getIntent();
-        String restaurant = intent2.getStringExtra("name");
+        final String restaurant = intent2.getStringExtra("name");
         text = findViewById(R.id.textView);
         text.setText(restaurant);
         changeView(0);
 
         menuReference = FirebaseDatabase.getInstance().getReference();
-
+/*
         // call button
-        final String call_number = intent2.getStringExtra("number");
+        final String call_number = intent2.getStringExtra("call");
         call_btn=(Button)findViewById(R.id.call);
         call_btn.setCompoundDrawables(drawable, null, null, null);
         call_btn.setText(call_number);
@@ -87,7 +87,7 @@ public class RestaurantActivity extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+call_number)));
             }
-        });
+        });*/
 
         //menu list
         mListView = (ListView)findViewById(R.id.menuList);
@@ -100,6 +100,7 @@ public class RestaurantActivity extends AppCompatActivity {
         final Button button1=(Button)findViewById(R.id.menu);
         final Button button2 = (Button) findViewById(R.id.info) ;
         final Button button3=(Button)findViewById(R.id.review);
+
         button1.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -150,6 +151,7 @@ public class RestaurantActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent3=new Intent(RestaurantActivity.this,ReviewActivity.class);
+                        intent3.putExtra("name",restaurant);
                         startActivity(intent3);
                     }
                 });

@@ -18,11 +18,14 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     SharedPreferences loginPref;
 
     private DatabaseReference databaseReference;
-
+    String restaurant;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
+
+        Intent intent2=getIntent();
+        restaurant=intent2.getStringExtra("name");
 
         loginPref = getSharedPreferences("login", Activity.MODE_PRIVATE);
         final String user=loginPref.getString("login", null);
@@ -38,6 +41,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
                 .setMessage("리뷰 작성이 완료되었습니다.")
                 .setNeutralButton("닫기",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dlg, int sumthin) {
+                        intent.putExtra("name",restaurant);
                         startActivity(intent);
                     }
                 })
