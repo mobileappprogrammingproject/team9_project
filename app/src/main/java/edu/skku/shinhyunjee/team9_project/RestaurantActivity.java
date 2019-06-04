@@ -76,9 +76,9 @@ public class RestaurantActivity extends AppCompatActivity {
         changeView(0);
 
         menuReference = FirebaseDatabase.getInstance().getReference();
-/*
+
         // call button
-        final String call_number = intent2.getStringExtra("call");
+        final String call_number = intent2.getStringExtra("number");
         call_btn=(Button)findViewById(R.id.call);
         call_btn.setCompoundDrawables(drawable, null, null, null);
         call_btn.setText(call_number);
@@ -87,7 +87,7 @@ public class RestaurantActivity extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+call_number)));
             }
-        });*/
+        });
 
         //menu list
         mListView = (ListView)findViewById(R.id.menuList);
