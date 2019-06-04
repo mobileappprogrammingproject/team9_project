@@ -27,6 +27,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FoodKindActivity extends AppCompatActivity {
     ListView mListView;
@@ -36,7 +38,6 @@ public class FoodKindActivity extends AppCompatActivity {
     private DatabaseReference mPostReference;
     String[] foodKindName = {"KoreanFood","Pizza","Dessert","Snack","Chicken","ChineseFood","JapaneseFood","nightFood","beef","Hamburger","lunchBox","soup"};
     String[] content = {"한식","피자","카페/디저트","분식","치킨","중국집","돈까스/회/일식","야식","보쌈/족발","패스트푸드","도시락","찜/탕"};
-    ArrayList<RestaurantItem> temp = new ArrayList<RestaurantItem>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +50,7 @@ public class FoodKindActivity extends AppCompatActivity {
         //set adapter and listview
         mListView=findViewById(R.id.listView);
         for(int k=0;k<12;k++) {
-            temp = data[k];
             adapter[k] = new RestaurantAdapter(this, data[k]);
-            /*mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
-                    Intent intent = new Intent(FoodKindActivity.this, RestaurantActivity.class);
-                    RestaurantItem ri = temp.get(i);
-                    intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
-                    startActivity(intent);
-                }
-            });*/
         }
 
         Button.OnClickListener onClickListener = new Button.OnClickListener() {
@@ -426,6 +417,7 @@ public class FoodKindActivity extends AppCompatActivity {
         };
         mPostReference.child("restaurant_list").addValueEventListener(postListener);
     }
+
 
 }
 

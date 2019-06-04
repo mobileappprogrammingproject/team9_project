@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
-        android:id="@+id/restaurant_tv"
+        android:id="@+id/name_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="RESTAURANT"
@@ -28,8 +28,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:drawable/btn_star_big_on"
-        app:layout_constraintStart_toStartOf="@+id/restaurant_tv"
-        app:layout_constraintTop_toBottomOf="@+id/restaurant_tv" />
+        app:layout_constraintStart_toStartOf="@+id/name_tv"
+        app:layout_constraintTop_toBottomOf="@+id/name_tv" />
 
     <TextView
         android:id="@+id/star_tv"
@@ -41,7 +41,7 @@
         app:layout_constraintStart_toEndOf="@id/star"/>
 
     <TextView
-        android:id="@+id/info_tv"
+        android:id="@+id/content_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="INFO"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:text="거리"
         android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/info_tv"
-        app:layout_constraintStart_toEndOf="@id/info_tv"/>
+        app:layout_constraintBottom_toBottomOf="@+id/content_tv"
+        app:layout_constraintStart_toEndOf="@id/content_tv"/>
 
 </android.support.constraint.ConstraintLayout>

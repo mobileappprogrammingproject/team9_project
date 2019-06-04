@@ -29,17 +29,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class RestaurantActivity extends AppCompatActivity {
     private DatabaseReference menuReference;
     TextView text;
     Button call_btn;
-    ListView mListView;
+    ListView mListView; ListView rListView;
     ArrayList<String> menu_array;
+    String restaurant;
+    ArrayList<ReviewPost> review_array;
+
     private void changeView(int index) {
         ListView menuList=(ListView)findViewById(R.id.menuList);
         TextView textView2 = (TextView) findViewById(R.id.information) ;
         ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraint);
+        menuReference = FirebaseDatabase.getInstance().getReference();
+        rListView = (ListView)findViewById(R.id.reviewList);
+
 
         switch (index) {
             case 0 :
@@ -70,15 +77,15 @@ public class RestaurantActivity extends AppCompatActivity {
         drawable.setBounds(0, 0, width, height);
 
         Intent intent2 = getIntent();
-        final String restaurant = intent2.getStringExtra("name");
+        restaurant = intent2.getStringExtra("name");
         text = findViewById(R.id.textView);
         text.setText(restaurant);
         changeView(0);
 
         menuReference = FirebaseDatabase.getInstance().getReference();
-/*
+
         // call button
-        final String call_number = intent2.getStringExtra("call");
+        final String call_number = intent2.getStringExtra("number");
         call_btn=(Button)findViewById(R.id.call);
         call_btn.setCompoundDrawables(drawable, null, null, null);
         call_btn.setText(call_number);
@@ -87,7 +94,7 @@ public class RestaurantActivity extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+call_number)));
             }
-        });*/
+        });
 
         //menu list
         mListView = (ListView)findViewById(R.id.menuList);
@@ -96,6 +103,13 @@ public class RestaurantActivity extends AppCompatActivity {
         ArrayAdapter<String> menu_adapter = new ArrayAdapter<String>(RestaurantActivity.this,android.R.layout.simple_list_item_1,menu_array);
         mListView.setAdapter(menu_adapter);
 
+
+        // review list
+        review_array = new ArrayList<ReviewPost>();
+        ReviewAdapter review_adapter = new ReviewAdapter(RestaurantActivity.this, review_array);
+        //ArrayAdapter<ReviewPost> review_adapter = new ArrayAdapter<String>(RestaurantActivity.this, android.R.layout.simple_list_item_1, review_array);
+        getReviewData(restaurant);
+        rListView.setAdapter(review_adapter);
 
         final Button button1=(Button)findViewById(R.id.menu);
         final Button button2 = (Button) findViewById(R.id.info) ;
@@ -192,4 +206,30 @@ public class RestaurantActivity extends AppCompatActivity {
         };
         menuReference.child("restaurant_list").child(restaurant).child("menu").addValueEventListener(postListener);
     }
+
+    public void getReviewData(String restaurant){
+        final ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot rds : dataSnapshot.getChildren()){
+                    Log.d("getReviewKey","key: "+ rds.getKey());
+                    ReviewPost get = rds.getValue(ReviewPost.class);
+                    Log.d("getReviewData","star: "+get.star+" name: "+get.name+" content: "+get.content);
+                    ReviewPost post = new ReviewPost(get.content,get.name,get.star);
+                    review_array.add(post);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        menuReference.child("restaurant_list").child(restaurant).child("evaluation").child("review_list").addValueEventListener(postListener);
+
+    }
+
+
+
 }
