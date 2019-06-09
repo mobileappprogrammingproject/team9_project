@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="480dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/roulette"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableLayout
+            android:id="@+id/tableLayout2"
+            android:layout_width="480dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/KoreanFood"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="#00ff0000"
+                    android:drawableTop="@drawable/rice"
+                    android:text="한식" />
+
+                <Button
+                    android:id="@+id/Pizza"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="#00ff0000"
+                    android:drawableTop="@drawable/pizza"
+                    android:text="피자" />
+
+                <Button
+                    android:id="@+id/Dessert"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="#00ff0000"
+                    android:drawableTop="@drawable/dessert"
+                    android:text="카페/디저트" />
+
+                <Button
+                    android:id="@+id/Snack"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="#00ff0000"
+                    android:drawableTop="@drawable/snack"
+                    android:text="분식" />
+
+            </TableRow>
+
+            <TableRow>
+
+
+                <Button
+                    android:id="@+id/Chicken"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="#00ff0000"
+                    android:drawableTop="@drawable/chicken"
+                    android:text="치킨" />
+
+                <Button
+                    android:id="@+id/ChineseFood"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="#00ff0000"
+                    android:drawableTop="@drawable/chinesefood"
+                    android:text="중국집" />
+
+                <Button
+                    android:id="@+id/JapaneseFood"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="#00ff0000"
+                    android:drawableTop="@drawable/sushi"
+                    android:text="돈까스/회/일식" />
+
+                <Button
+                    android:id="@+id/nightFood"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="#00ff0000"
+                    android:drawableTop="@drawable/nightfood"
+                    android:text="야식" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/beef"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="#00ff0000"
+                    android:drawableTop="@drawable/beef"
+                    android:text="보쌈/족발" />
+
+                <Button
+                    android:id="@+id/Hamburger"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="#00ff0000"
+                    android:drawableTop="@drawable/hamburger"
+                    android:text="패스트푸드" />
+
+                <Button
+                    android:id="@+id/lunchBox"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="#00ff0000"
+                    android:drawableTop="@drawable/lunchbox"
+                    android:text="도시락" />
+
+                <Button
+                    android:id="@+id/soup"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="#00ff0000"
+                    android:drawableTop="@drawable/soup"
+                    android:text="찜/탕" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/roulette"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#F1948A"
+        android:text="추첨"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
