@@ -12,30 +12,36 @@
         android:roundIcon="@drawable/title_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity"
+            android:screenOrientation="sensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".SignUpActivity"
+            android:screenOrientation="sensor"/>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="sensor">
             <intent-filter>
                 <action android:name="android.intent.action.LOGIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RouletteActivity" />
-        <activity android:name=".FoodKindActivity">
+        <activity android:name=".RouletteActivity"
+            android:screenOrientation="sensor"/>
+        <activity android:name=".FoodKindActivity"
+            android:screenOrientation="sensor">
             <intent-filter>
                 <action android:name="android.intent.action.FOODKIND" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RestaurantActivity">
+        <activity android:name=".RestaurantActivity"
+            android:screenOrientation="sensor">
             <intent-filter>
                 <action android:name="android.intent.action.RESTAURANT" />
 
@@ -43,7 +49,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ReviewActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="sensor">
+
             <intent-filter>
 
                 <category android:name="android.intent.category.LAUNCHER" />
