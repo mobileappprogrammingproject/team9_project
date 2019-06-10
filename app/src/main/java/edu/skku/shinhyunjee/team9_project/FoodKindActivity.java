@@ -1,8 +1,19 @@
 package edu.skku.shinhyunjee.team9_project;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +39,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FoodKindActivity extends AppCompatActivity {
@@ -43,6 +55,7 @@ public class FoodKindActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_kind);
+
 
         mPostReference = FirebaseDatabase.getInstance().getReference();
         for(int i=0;i<12;i++) data[i] = new ArrayList<RestaurantItem>(); // arraylist array initialize
@@ -331,7 +344,7 @@ public class FoodKindActivity extends AppCompatActivity {
             @Override
             public int compare(RestaurantItem r1, RestaurantItem r2) {
 
-                return Double.valueOf(r1.getDis()).compareTo(Double.valueOf(r2.getDis()));
+                return Double.valueOf(r1.getReview_num()).compareTo(Double.valueOf(r2.getReview_num()));
             }
         };
         final Comparator<RestaurantItem> cmpStar = new Comparator<RestaurantItem>() {
@@ -406,9 +419,14 @@ public class FoodKindActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 data[num].clear();
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
-                    Log.d("getFirebaseDatabase","key: "+ds.getKey());
                     RestaurantPost get = ds.getValue(RestaurantPost.class);
-                    RestaurantItem ri = new RestaurantItem(get.name,get.info, get.location,get.business_hours,get.number,get.kind,get.star); // temporary distance 0
+                    Log.d("getFirebaseDatabase","key: "+ds.getKey());
+
+                    HashMap<String, Object> evaluation = new HashMap<>();
+                    evaluation.putAll(get.evaluation);
+                    long reviewNum = (Long)evaluation.get("cnt");  Log.d("getReviewNum",""+reviewNum);
+
+                    RestaurantItem ri = new RestaurantItem(get.name,get.info, get.location,get.business_hours,get.number,get.kind,get.star, reviewNum);
                     for(String retval : content.split("/")) {
                         if (get.kind.contains(retval)) {
                             data[num].add(ri);
@@ -423,6 +441,8 @@ public class FoodKindActivity extends AppCompatActivity {
 
             }
         };
+
+
         mPostReference.child("restaurant_list").addValueEventListener(postListener);
     }
 

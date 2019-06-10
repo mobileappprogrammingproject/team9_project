@@ -86,7 +86,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     { android.Manifest.permission.ACCESS_FINE_LOCATION },0 );
         }
         else{
-            Toast.makeText(MapActivity.this, "LocationManager is ready!", Toast.LENGTH_SHORT).show();
             lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
                     0,
                     0,

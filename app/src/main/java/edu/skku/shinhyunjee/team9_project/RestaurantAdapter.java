@@ -51,7 +51,7 @@ public class RestaurantAdapter extends BaseAdapter {
         tv1.setText(item.getName());
         tv2.setText(""+item.getStar());
         tv3.setText(item.getInfo());
-        tv4.setText(item.getDis()+"km");
+        tv4.setText("리뷰: "+item.getReview_num()+"개");
         return view;
     }
 }
