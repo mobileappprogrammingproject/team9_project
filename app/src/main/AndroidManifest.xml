@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.skku.shinhyunjee.team9_project">
 
-    <uses-permission android:name="android.permission.INTERNET "/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.DIAL_PHONE"/>
+    <uses-permission android:name="android.permission.INTERNET " />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.DIAL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/title_logo"
@@ -12,7 +14,13 @@
         android:roundIcon="@drawable/title_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity"
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCeDcjUJD-ozljSPGczH8t6NlORbaED7UU" />
+
+        <activity android:name=".MapActivity"></activity>
+        <activity
+            android:name=".SplashActivity"
             android:screenOrientation="sensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,9 +28,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity"
-            android:screenOrientation="sensor"/>
-        <activity android:name=".LoginActivity"
+        <activity
+            android:name=".SignUpActivity"
+            android:screenOrientation="sensor" />
+        <activity
+            android:name=".LoginActivity"
             android:screenOrientation="sensor">
             <intent-filter>
                 <action android:name="android.intent.action.LOGIN" />
@@ -30,9 +40,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RouletteActivity"
-            android:screenOrientation="sensor"/>
-        <activity android:name=".FoodKindActivity"
+        <activity
+            android:name=".RouletteActivity"
+            android:screenOrientation="sensor" />
+        <activity
+            android:name=".FoodKindActivity"
             android:screenOrientation="sensor">
             <intent-filter>
                 <action android:name="android.intent.action.FOODKIND" />
@@ -40,7 +52,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RestaurantActivity"
+        <activity
+            android:name=".RestaurantActivity"
             android:screenOrientation="sensor">
             <intent-filter>
                 <action android:name="android.intent.action.RESTAURANT" />
@@ -49,11 +62,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ReviewActivity" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="sensor">
-
             <intent-filter>
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
