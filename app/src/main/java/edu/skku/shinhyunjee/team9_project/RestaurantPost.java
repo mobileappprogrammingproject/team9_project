@@ -12,6 +12,7 @@ public class RestaurantPost {
     public String number; // phone number
     public String kind;
     public double star;
+    public HashMap<String, Object> evaluation = new HashMap<>();
 //    public HashMap<String,Integer> menu = new HashMap<String,Integer>();
 
 
