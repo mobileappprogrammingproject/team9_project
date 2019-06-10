@@ -33,12 +33,13 @@ import java.util.Map;
 
 public class RestaurantActivity extends AppCompatActivity {
     private DatabaseReference menuReference;
-    TextView text;
-    Button call_btn;
+    TextView text, location_text;
+    Button call_btn, location_btn;
     ListView mListView; ListView rListView;
     ArrayList<String> menu_array;
     String restaurant;
     ArrayList<ReviewPost> review_array;
+
 
     private void changeView(int index) {
         ListView menuList=(ListView)findViewById(R.id.menuList);
@@ -80,9 +81,22 @@ public class RestaurantActivity extends AppCompatActivity {
         restaurant = intent2.getStringExtra("name");
         text = findViewById(R.id.textView);
         text.setText(restaurant);
+        location_text=findViewById(R.id.location); location_text.setText(intent2.getStringExtra("location"));
         changeView(0);
 
         menuReference = FirebaseDatabase.getInstance().getReference();
+
+        //location check button
+        location_btn = (Button)findViewById(R.id.locationCheck);
+        location_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mapIntent = new Intent(RestaurantActivity.this, MapActivity.class);
+                mapIntent.putExtra("location",location_text.getText().toString());
+                mapIntent.putExtra("restaurant",restaurant);
+                startActivity(mapIntent);
+            }
+        });
 
         // call button
         final String call_number = intent2.getStringExtra("number");

@@ -75,6 +75,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 RestaurantItem ri = data[0].get(i);
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
+                                intent.putExtra("location",ri.getLocation());
                                 startActivity(intent);
                             }
                         });
@@ -96,6 +97,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 RestaurantItem ri = data[1].get(i);
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
+                                intent.putExtra("location",ri.getLocation());
                                 startActivity(intent);
                             }
                         });
@@ -117,6 +119,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 RestaurantItem ri = data[2].get(i);
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
+                                intent.putExtra("location",ri.getLocation());
                                 startActivity(intent);
                             }
                         });
@@ -138,6 +141,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 RestaurantItem ri = data[3].get(i);
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
+                                intent.putExtra("location",ri.getLocation());
                                 startActivity(intent);
                             }
                         });
@@ -159,6 +163,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 RestaurantItem ri = data[4].get(i);
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
+                                intent.putExtra("location",ri.getLocation());
                                 startActivity(intent);
                             }
                         });
@@ -180,6 +185,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 RestaurantItem ri = data[5].get(i);
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
+                                intent.putExtra("location",ri.getLocation());
                                 startActivity(intent);
                             }
                         });
@@ -201,7 +207,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 RestaurantItem ri = data[6].get(i);
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
-
+                                intent.putExtra("location",ri.getLocation());
                                 startActivity(intent);
                             }
                         });
@@ -223,6 +229,7 @@ public class FoodKindActivity extends AppCompatActivity {
                             RestaurantItem ri = data[7].get(i);
                             intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                             intent.putExtra("number",ri.getNumber());
+                            intent.putExtra("location",ri.getLocation());
 
                             startActivity(intent);
                         }
@@ -245,7 +252,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 RestaurantItem ri = data[8].get(i);
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
-
+                                intent.putExtra("location",ri.getLocation());
                                 startActivity(intent);
                             }
                         });
@@ -267,6 +274,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 RestaurantItem ri = data[9].get(i);
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
+                                intent.putExtra("location",ri.getLocation());
 
                                 startActivity(intent);
                             }
@@ -289,7 +297,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 RestaurantItem ri = data[10].get(i);
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
-
+                                intent.putExtra("location",ri.getLocation());
                                 startActivity(intent);
                             }
                         });
@@ -310,7 +318,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 RestaurantItem ri = data[11].get(i);
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
-
+                                intent.putExtra("location",ri.getLocation());
                                 startActivity(intent);
                             }
                         });
