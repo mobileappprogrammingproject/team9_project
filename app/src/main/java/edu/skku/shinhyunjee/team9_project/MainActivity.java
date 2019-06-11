@@ -1,12 +1,17 @@
 package edu.skku.shinhyunjee.team9_project;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity{
+
+    SharedPreferences loginPref;
 
     class BtnOnClickListener implements Button.OnClickListener {
         @Override
@@ -67,6 +72,20 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(intent2);
             }
         });
+        Button logout=(Button)findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginPref = getSharedPreferences("login", Activity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = loginPref.edit();
+                editor.remove("login");
+                editor.commit();
+                Intent intent3 = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent3);
+                Toast.makeText(MainActivity.this, "로그아웃되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         BtnOnClickListener oonClickListener = new BtnOnClickListener();
 
         Button button1=(Button)findViewById(R.id.KoreanFood);
