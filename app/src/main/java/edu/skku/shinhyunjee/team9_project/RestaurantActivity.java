@@ -33,7 +33,7 @@ import java.util.Map;
 
 public class RestaurantActivity extends AppCompatActivity {
     private DatabaseReference menuReference;
-    TextView text, location_text;
+    TextView text, location_text, info_text;
     Button call_btn, location_btn;
     ListView mListView; ListView rListView;
     ArrayList<String> menu_array;
@@ -82,6 +82,9 @@ public class RestaurantActivity extends AppCompatActivity {
         text = findViewById(R.id.textView);
         text.setText(restaurant);
         location_text=findViewById(R.id.location); location_text.setText(intent2.getStringExtra("location"));
+        info_text = findViewById(R.id.information);
+        info_text.setText(intent2.getStringExtra("info")+"\n"+intent2.getStringExtra("kind")+"\n"+intent2.getStringExtra("business_hours"));
+
         changeView(0);
 
         menuReference = FirebaseDatabase.getInstance().getReference();

@@ -46,7 +46,12 @@ public class ReviewAdapter extends BaseAdapter{
         TextView star_tv = (TextView)view.findViewById(R.id.star_tv);
         TextView content_tv = (TextView)view.findViewById(R.id.content_tv);
 
-        name_tv.setText(item.name.substring(0, item.name.length()-1) + "*");
+        String text = item.name; int len = item.name.length();//Log.d("reviewUserName","text: "+text+", len: "+len);
+        if(len >= 1) {
+            text = text.substring(0,len)+"*";
+            name_tv.setText(text);
+        }
+        else name_tv.setText(item.name);
         star_tv.setText(item.star+"");
         content_tv.setText(item.content);
 

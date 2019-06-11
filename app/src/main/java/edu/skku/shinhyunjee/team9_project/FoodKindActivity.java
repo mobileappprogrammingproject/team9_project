@@ -90,6 +90,9 @@ public class FoodKindActivity extends AppCompatActivity {
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
                                 intent.putExtra("location",ri.getLocation());
+                                intent.putExtra("info",ri.getInfo());
+                                intent.putExtra("kind",ri.getKind());
+                                intent.putExtra("business_hours",ri.getBusiness_hours());
                                 startActivity(intent);
                             }
                         });
@@ -113,6 +116,9 @@ public class FoodKindActivity extends AppCompatActivity {
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
                                 intent.putExtra("location",ri.getLocation());
+                                intent.putExtra("info",ri.getInfo());
+                                intent.putExtra("kind",ri.getKind());
+                                intent.putExtra("business_hours",ri.getBusiness_hours());
                                 startActivity(intent);
                             }
                         });
@@ -136,6 +142,9 @@ public class FoodKindActivity extends AppCompatActivity {
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
                                 intent.putExtra("location",ri.getLocation());
+                                intent.putExtra("info",ri.getInfo());
+                                intent.putExtra("kind",ri.getKind());
+                                intent.putExtra("business_hours",ri.getBusiness_hours());
                                 startActivity(intent);
                             }
                         });
@@ -159,6 +168,9 @@ public class FoodKindActivity extends AppCompatActivity {
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
                                 intent.putExtra("location",ri.getLocation());
+                                intent.putExtra("info",ri.getInfo());
+                                intent.putExtra("kind",ri.getKind());
+                                intent.putExtra("business_hours",ri.getBusiness_hours());
                                 startActivity(intent);
                             }
                         });
@@ -182,6 +194,9 @@ public class FoodKindActivity extends AppCompatActivity {
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
                                 intent.putExtra("location",ri.getLocation());
+                                intent.putExtra("info",ri.getInfo());
+                                intent.putExtra("kind",ri.getKind());
+                                intent.putExtra("business_hours",ri.getBusiness_hours());
                                 startActivity(intent);
                             }
                         });
@@ -205,6 +220,9 @@ public class FoodKindActivity extends AppCompatActivity {
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
                                 intent.putExtra("location",ri.getLocation());
+                                intent.putExtra("info",ri.getInfo());
+                                intent.putExtra("kind",ri.getKind());
+                                intent.putExtra("business_hours",ri.getBusiness_hours());
                                 startActivity(intent);
                             }
                         });
@@ -228,6 +246,9 @@ public class FoodKindActivity extends AppCompatActivity {
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
                                 intent.putExtra("location",ri.getLocation());
+                                intent.putExtra("info",ri.getInfo());
+                                intent.putExtra("kind",ri.getKind());
+                                intent.putExtra("business_hours",ri.getBusiness_hours());
                                 startActivity(intent);
                             }
                         });
@@ -251,6 +272,9 @@ public class FoodKindActivity extends AppCompatActivity {
                             intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                             intent.putExtra("number",ri.getNumber());
                             intent.putExtra("location",ri.getLocation());
+                            intent.putExtra("info",ri.getInfo());
+                            intent.putExtra("kind",ri.getKind());
+                            intent.putExtra("business_hours",ri.getBusiness_hours());
 
                             startActivity(intent);
                         }
@@ -275,6 +299,9 @@ public class FoodKindActivity extends AppCompatActivity {
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
                                 intent.putExtra("location",ri.getLocation());
+                                intent.putExtra("info",ri.getInfo());
+                                intent.putExtra("kind",ri.getKind());
+                                intent.putExtra("business_hours",ri.getBusiness_hours());
                                 startActivity(intent);
                             }
                         });
@@ -298,6 +325,9 @@ public class FoodKindActivity extends AppCompatActivity {
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
                                 intent.putExtra("location",ri.getLocation());
+                                intent.putExtra("info",ri.getInfo());
+                                intent.putExtra("kind",ri.getKind());
+                                intent.putExtra("business_hours",ri.getBusiness_hours());
 
                                 startActivity(intent);
                             }
@@ -322,6 +352,9 @@ public class FoodKindActivity extends AppCompatActivity {
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
                                 intent.putExtra("location",ri.getLocation());
+                                intent.putExtra("info",ri.getInfo());
+                                intent.putExtra("kind",ri.getKind());
+                                intent.putExtra("business_hours",ri.getBusiness_hours());
                                 startActivity(intent);
                             }
                         });
@@ -344,6 +377,9 @@ public class FoodKindActivity extends AppCompatActivity {
                                 intent.putExtra("name", ri.getName()); //  send a restaurant name to next activity
                                 intent.putExtra("number",ri.getNumber());
                                 intent.putExtra("location",ri.getLocation());
+                                intent.putExtra("info",ri.getInfo());
+                                intent.putExtra("kind",ri.getKind());
+                                intent.putExtra("business_hours",ri.getBusiness_hours());
                                 startActivity(intent);
                             }
                         });
