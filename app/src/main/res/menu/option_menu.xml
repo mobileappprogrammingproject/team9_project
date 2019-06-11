@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/m1"
-        android:title="거리 순" />
+        android:title="리뷰(개수) 순" />
     <item
         android:id="@+id/m2"
-        android:title="평점 순"/>
+        android:title="점수 순" />
 </menu>

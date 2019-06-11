@@ -50,6 +50,7 @@ public class FoodKindActivity extends AppCompatActivity {
     private DatabaseReference mPostReference;
     String[] foodKindName = {"KoreanFood","Pizza","Dessert","Snack","Chicken","ChineseFood","JapaneseFood","nightFood","beef","Hamburger","lunchBox","soup"};
     String[] content = {"한식","피자","카페/디저트","분식","치킨","중국집","돈까스/회/일식","야식","보쌈/족발","패스트푸드","도시락","찜/탕"};
+    int kindnum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +93,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
+                        kindnum=0;
                         break;
                     case R.id.Pizza:
                         for (int i = 0; i < 12; i++) {
@@ -114,6 +116,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
+                        kindnum=1;
                         break;
                     case R.id.Dessert:
                         for (int i = 0; i < 12; i++) {
@@ -136,6 +139,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
+                        kindnum=2;
                         break;
                     case R.id.Snack:
                         for (int i = 0; i < 12; i++) {
@@ -158,6 +162,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
+                        kindnum=3;
                         break;
                     case R.id.Chicken:
                         for (int i = 0; i < 12; i++) {
@@ -180,6 +185,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
+                        kindnum=4;
                         break;
                     case R.id.ChineseFood:
                         for (int i = 0; i < 12; i++) {
@@ -202,6 +208,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
+                        kindnum=5;
                         break;
                     case R.id.JapaneseFood:
                         for (int i = 0; i < 12; i++) {
@@ -224,6 +231,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
+                        kindnum=6;
                         break;
                     case R.id.nightFood:
                         for (int i = 0; i < 12; i++) {
@@ -247,6 +255,7 @@ public class FoodKindActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
+                        kindnum=7;
                         break;
                     case R.id.beef:
                         for (int i = 0; i < 12; i++) {
@@ -269,6 +278,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
+                        kindnum=8;
                         break;
                     case R.id.Hamburger:
                         for (int i = 0; i < 12; i++) {
@@ -292,6 +302,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
+                        kindnum=9;
                         break;
                     case R.id.lunchBox:
                         for (int i = 0; i < 12; i++) {
@@ -314,6 +325,7 @@ public class FoodKindActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
+                        kindnum=10;
                         break;
                     case R.id.soup:
                         for (int i = 0; i < 12; i++) {
@@ -335,23 +347,24 @@ public class FoodKindActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
+                        kindnum=11;
                         break;
                 }
             }
         };
 
-        final Comparator<RestaurantItem> cmpDis = new Comparator<RestaurantItem>() {
+        final Comparator<RestaurantItem> cmpReview = new Comparator<RestaurantItem>() {
             @Override
             public int compare(RestaurantItem r1, RestaurantItem r2) {
-
-                return Double.valueOf(r1.getReview_num()).compareTo(Double.valueOf(r2.getReview_num()));
+                return Double.compare(r1.getReview_num(), r2.getReview_num());
+                //return Double.valueOf(r1.getReview_num()).compareTo(Double.valueOf(r2.getReview_num()));
             }
         };
         final Comparator<RestaurantItem> cmpStar = new Comparator<RestaurantItem>() {
             @Override
             public int compare(RestaurantItem r1, RestaurantItem r2) {
-                return 0;
-                //return Double.valueOf(r2.getEvaluation()[0].getStar()).compareTo(Double.valueOf(r1.getEvaluation()[0].getStar()));
+                return Double.compare(r1.getStar(),r2.getStar());
+                //return Double.valueOf(r2.getStar()).compareTo(Double.valueOf(r1.getStar()));
             }
         };
 
@@ -369,15 +382,17 @@ public class FoodKindActivity extends AppCompatActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         int id=menuItem.getItemId();
-                        for(int i=0;i<12;i++) {
+                        //for(int i=0;i<12;i++) {
                             if (id == R.id.m1) {
-                                Collections.sort(data[i], cmpDis);
-                                mListView.setAdapter(adapter[i]);
+                                Collections.sort(data[kindnum], cmpReview);
+                                Collections.reverse(data[kindnum]);
+                                mListView.setAdapter(adapter[kindnum]);
                             } else if (id == R.id.m2) {
-                                Collections.sort(data[i], cmpStar);
-                                mListView.setAdapter(adapter[i]);
+                                Collections.sort(data[kindnum], cmpStar);
+                                Collections.reverse(data[kindnum]);
+                                mListView.setAdapter(adapter[kindnum]);
                             }
-                        }
+                        //}
                         return false;
                     }
                 });
@@ -404,6 +419,7 @@ public class FoodKindActivity extends AppCompatActivity {
     }
         for(int i=0;i<12;i++) {
         if (foodKind.equals(mButton[i].getText().toString())) {
+            kindnum=i;
             mButton[i].performClick();
             getFirebaseDatabase(i,foodKindName[i], content[i]);
             break;
