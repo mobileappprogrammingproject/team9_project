@@ -418,7 +418,7 @@ public class FoodKindActivity extends AppCompatActivity {
             mButton[i].setOnClickListener(onClickListener);
     }
         for(int i=0;i<12;i++) {
-        if (foodKind.equals(mButton[i].getText().toString())) {
+        if (foodKind.equals(content[i])) {
             kindnum=i;
             mButton[i].performClick();
             getFirebaseDatabase(i,foodKindName[i], content[i]);
@@ -446,6 +446,7 @@ public class FoodKindActivity extends AppCompatActivity {
                     for(String retval : content.split("/")) {
                         if (get.kind.contains(retval)) {
                             data[num].add(ri);
+                            break;
                         }
                     }
                 }
