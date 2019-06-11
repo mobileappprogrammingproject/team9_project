@@ -6,11 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ScrollView
+        android:layout_width="360dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/roulette"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
     <TableLayout
         android:id="@+id/tableLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="478dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -125,16 +132,27 @@
                 android:text="찜/탕" />
         </TableRow>
     </TableLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/roulette"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="#F1948A"
+        android:background="#F9E79F"
         android:text="추첨"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/logout"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/logout"
+        android:layout_margin="10dp"
+        android:background="#F9E79F"
+        android:text="로그아웃"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </android.support.constraint.ConstraintLayout>
