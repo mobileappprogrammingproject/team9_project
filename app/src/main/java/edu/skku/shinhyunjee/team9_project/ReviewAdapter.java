@@ -48,7 +48,7 @@ public class ReviewAdapter extends BaseAdapter{
 
         String text = item.name; int len = item.name.length();//Log.d("reviewUserName","text: "+text+", len: "+len);
         if(len >= 1) {
-            text = text.substring(0,len)+"*";
+            text = text.substring(0,len - 1)+"*";
             name_tv.setText(text);
         }
         else name_tv.setText(item.name);
