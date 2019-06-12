@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -44,7 +45,7 @@ public class RestaurantActivity extends AppCompatActivity {
     private void changeView(int index) {
         ListView menuList=(ListView)findViewById(R.id.menuList);
         TextView textView2 = (TextView) findViewById(R.id.information) ;
-        ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraint);
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.constraint);
         menuReference = FirebaseDatabase.getInstance().getReference();
         rListView = (ListView)findViewById(R.id.reviewList);
 
@@ -53,17 +54,17 @@ public class RestaurantActivity extends AppCompatActivity {
             case 0 :
                 menuList.setVisibility(View.VISIBLE);
                 textView2.setVisibility(View.INVISIBLE);
-                constraintLayout.setVisibility(View.INVISIBLE);
+                linearLayout.setVisibility(View.INVISIBLE);
                 break;
             case 1 :
                 menuList.setVisibility(View.INVISIBLE);
                 textView2.setVisibility(View.VISIBLE);
-                constraintLayout.setVisibility(View.INVISIBLE);
+                linearLayout.setVisibility(View.INVISIBLE);
                 break ;
             case 2 :
                 menuList.setVisibility(View.INVISIBLE);
                 textView2.setVisibility(View.INVISIBLE) ;
-                constraintLayout.setVisibility(View.VISIBLE);
+                linearLayout.setVisibility(View.VISIBLE);
                 break ;
         }
     }
