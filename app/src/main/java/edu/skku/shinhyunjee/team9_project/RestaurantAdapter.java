@@ -42,12 +42,13 @@ public class RestaurantAdapter extends BaseAdapter {
         }
 
         RestaurantItem item = items.get(i);
-        ImageView iv1=(ImageView)view.findViewById(R.id.image);
+        TextView rk = (TextView) view.findViewById(R.id.rank);
         TextView tv1 = (TextView)view.findViewById(R.id.name_tv);
         TextView tv2 = (TextView)view.findViewById(R.id.star_tv);
         TextView tv3 = (TextView)view.findViewById(R.id.content_tv);
         TextView tv4=(TextView)view.findViewById(R.id.dis);
 
+        rk.setText((i+1)+"");
         tv1.setText(item.getName());
         tv2.setText(""+item.getStar());
         tv3.setText(item.getInfo());
