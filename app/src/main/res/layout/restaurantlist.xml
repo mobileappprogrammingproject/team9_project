@@ -5,13 +5,15 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="90dp"
+
+    <TextView
+        android:id="@+id/rank"
+        android:layout_width="50dp"
         android:layout_height="80dp"
-        app:srcCompat="@android:drawable/ic_menu_gallery"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:textSize="40dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/name_tv"
@@ -20,7 +22,7 @@
         android:text="RESTAURANT"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintStart_toEndOf="@id/rank"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -28,33 +30,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:drawable/btn_star_big_on"
-        app:layout_constraintStart_toStartOf="@+id/name_tv"
-        app:layout_constraintTop_toBottomOf="@+id/name_tv" />
+        app:layout_constraintStart_toEndOf="@+id/rank"
+        app:layout_constraintTop_toBottomOf="@+id/content_tv" />
 
     <TextView
         android:id="@+id/star_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="STAR"
         android:textColor="#808080"
-        app:layout_constraintBottom_toBottomOf="@+id/star"
-        app:layout_constraintStart_toEndOf="@id/star"/>
+        app:layout_constraintStart_toEndOf="@id/star"
+        app:layout_constraintTop_toTopOf="@+id/star" />
 
     <TextView
         android:id="@+id/content_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="INFO"
-        app:layout_constraintStart_toStartOf="@id/star"
-        app:layout_constraintTop_toBottomOf="@+id/star_tv" />
+        app:layout_constraintStart_toEndOf="@+id/rank"
+        app:layout_constraintTop_toBottomOf="@+id/name_tv" />
 
     <TextView
         android:id="@+id/dis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="거리"
         android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/content_tv"
-        app:layout_constraintStart_toEndOf="@id/content_tv"/>
+        android:layout_marginTop="8dp"
+        android:text="거리"
+        app:layout_constraintStart_toEndOf="@+id/star_tv"
+        app:layout_constraintTop_toTopOf="@+id/star" />
 
 </android.support.constraint.ConstraintLayout>
