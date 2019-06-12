@@ -44,6 +44,7 @@ public class RestaurantActivity extends AppCompatActivity {
 
     private void changeView(int index) {
         ListView menuList=(ListView)findViewById(R.id.menuList);
+        LinearLayout linearLayout1=(LinearLayout)findViewById(R.id.linear);
         TextView textView2 = (TextView) findViewById(R.id.information) ;
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.constraint);
         menuReference = FirebaseDatabase.getInstance().getReference();
@@ -52,17 +53,17 @@ public class RestaurantActivity extends AppCompatActivity {
 
         switch (index) {
             case 0 :
-                menuList.setVisibility(View.VISIBLE);
+                linearLayout1.setVisibility(View.VISIBLE);
                 textView2.setVisibility(View.INVISIBLE);
                 linearLayout.setVisibility(View.INVISIBLE);
                 break;
             case 1 :
-                menuList.setVisibility(View.INVISIBLE);
+                linearLayout1.setVisibility(View.INVISIBLE);
                 textView2.setVisibility(View.VISIBLE);
                 linearLayout.setVisibility(View.INVISIBLE);
                 break ;
             case 2 :
-                menuList.setVisibility(View.INVISIBLE);
+                linearLayout1.setVisibility(View.INVISIBLE);
                 textView2.setVisibility(View.INVISIBLE) ;
                 linearLayout.setVisibility(View.VISIBLE);
                 break ;
