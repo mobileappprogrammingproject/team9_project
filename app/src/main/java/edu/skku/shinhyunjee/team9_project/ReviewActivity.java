@@ -32,7 +32,7 @@ import java.util.Map;
 public class ReviewActivity extends AppCompatActivity implements View.OnClickListener {
     SharedPreferences loginPref;
     String name="", content="", score = "";
-    EditText userName, reviewWrite;
+    EditText reviewWrite; TextView userName;
     private DatabaseReference postReference;
     Integer count = null; Double sum = null;
     TextView restaurantName;
@@ -47,7 +47,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_review);
         postReference = FirebaseDatabase.getInstance().getReference();
         restaurantName = (TextView)findViewById(R.id.restaurantName);
-        userName = (EditText)findViewById(R.id.userName);
+        userName = (TextView) findViewById(R.id.userName);
         reviewWrite = (EditText)findViewById(R.id.reviewWrite);
         spinner = (Spinner)findViewById(R.id.spinner);
 
@@ -77,6 +77,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         loginPref = getSharedPreferences("login", Activity.MODE_PRIVATE);
         final String user=loginPref.getString("login", null);
         Log.d("CHECK",user);
+        userName.setText(user);
         Button finish = (Button)findViewById(R.id.Finish);
         finish.setOnClickListener(this);
 
